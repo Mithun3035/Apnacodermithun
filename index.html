@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apna code mithun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="navbar">
+
+        <div class="left">
+            <div class="menu-btn" id="menuBtn">
+                <i class="fa fa-bars"></i>
+            </div>
+
+            <div class="logo">
+                <img src="https://images.unsplash.com/photo-1584697964154-0c8c3f64d3f5?w=100">
+                <span><span class="easy">Easy</span> <span class="notes">Notes</span></span>
+            </div>
+        </div>
+
+        <!-- Desktop Search -->
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button><i class="fa fa-search"></i></button>
+        </div>
+
+        <div class="right">
+
+            <i class="fa fa-search mobile-search" id="mobileSearch"></i>
+
+            <div class="mobile-search-box" id="mobileSearchBox">
+                <input type="text" placeholder="Search...">
+                <i class="fa fa-times close-search" id="closeSearch"></i>
+            </div>
+
+            <i class="fa fa-user profile-icon" id="profileIcon"></i>
+
+            <a href="#" class="login">Login</a>
+            <a href="#" class="signup">Join Us</a>
+
+        </div>
+    </div>
+
+    <!-- Profile Menu -->
+    <div class="profile-menu" id="profileMenu">
+        <a href="#" class="login-btn">Login</a>
+        <a href="#" class="signup-btn">Join Us</a>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            Menu
+            <i class="fa fa-times close-sidebar" id="closeSidebar"></i>
+        </div>
+
+        <ul>
+
+            <li>
+                <div class="menu-item" onclick="toggleMenu(this)">
+                    Dashboard <i class="fa fa-chevron-right arrow"></i>
+                </div>
+                <div class="submenu">
+                    <a href="#">Overview</a>
+                    <a href="#">Analytics</a>
+                    <a href="#">Reports</a>
+                    <a href="#">Statistics</a>
+                </div>
+            </li>
+
+            <li>
+                <div class="menu-item" onclick="toggleMenu(this)">
+                    Courses <i class="fa fa-chevron-right arrow"></i>
+                </div>
+                <div class="submenu">
+                    <a href="#">JEE</a>
+                    <a href="#">NEET</a>
+                    <a href="#">UPSC</a>
+                    <a href="#">SSC</a>
+                    <a href="#">Banking</a>
+                    <a href="#">Railway</a>
+                </div>
+            </li>
+
+            <li>
+                <div class="menu-item" onclick="toggleMenu(this)">
+                    Study Material <i class="fa fa-chevron-right arrow"></i>
+                </div>
+                <div class="submenu">
+                    <a href="#">Class 9</a>
+                    <a href="#">Class 10</a>
+                    <a href="#">Class 11</a>
+                    <a href="#">Class 12</a>
+                    <a href="#">Previous Year Papers</a>
+                </div>
+            </li>
+
+            <li>
+                <div class="menu-item" onclick="toggleMenu(this)">
+                    Resources <i class="fa fa-chevron-right arrow"></i>
+                </div>
+                <div class="submenu">
+                    <a href="#">Notes</a>
+                    <a href="#">Mock Test</a>
+                    <a href="#">E-books</a>
+                    <a href="#">Assignments</a>
+                </div>
+            </li>
+
+            <li>
+                <div class="menu-item">Support</div>
+            </li>
+
+            <li>
+                <div class="menu-item">Contact Us</div>
+            </li>
+
+            <li>
+                <div class="menu-item">About Us</div>
+            </li>
+
+            <li>
+                <div class="menu-item">Privacy Policy</div>
+            </li>
+
+            <li>
+                <div class="menu-item">Terms & Conditions</div>
+            </li>
+
+        </ul>
+    </div>
+
+    <script>
+
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const closeSidebar = document.getElementById("closeSidebar");
+
+        const mobileSearch = document.getElementById("mobileSearch");
+        const mobileSearchBox = document.getElementById("mobileSearchBox");
+        const closeSearch = document.getElementById("closeSearch");
+        const profileIcon = document.getElementById("profileIcon");
+        const profileMenu = document.getElementById("profileMenu");
+
+        /* Sidebar */
+        menuBtn.onclick = () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        }
+
+        closeSidebar.onclick = () => {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        overlay.onclick = () => {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+            profileMenu.classList.remove("active");
+        }
+
+        /* Submenu */
+        function toggleMenu(element) {
+            const submenu = element.nextElementSibling;
+            const arrow = element.querySelector(".arrow");
+            submenu.classList.toggle("active");
+            arrow.classList.toggle("rotate");
+        }
+
+        /* Mobile Search */
+        mobileSearch.onclick = () => {
+            mobileSearchBox.style.display = "flex";
+            mobileSearch.style.display = "none";
+            profileIcon.style.display = "none";
+        }
+
+        closeSearch.onclick = () => {
+            mobileSearchBox.style.display = "none";
+            mobileSearch.style.display = "block";
+            profileIcon.style.display = "block";
+        }
+
+        /* Profile */
+        profileIcon.onclick = () => {
+            profileMenu.classList.toggle("active");
+        }
+
+        document.addEventListener("click", function (e) {
+            if (!profileIcon.contains(e.target) && !profileMenu.contains(e.target)) {
+                profileMenu.classList.remove("active");
+            }
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <nav class="secondary-nav">
+        <div class="nav-list">
+
+            <!-- STATE BOOKS -->
+            <div class="nav-item">
+                <div class="nav-label">
+                    State Books <span class="chevron">▼</span>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="grid-container">
+                        <a href="Bihar.html">Bihar</a>
+                        <a href="#">UP</a>
+                        <a href="#">MP</a>
+                        <a href="#">Delhi</a>
+                        <a href="#">Punjab</a>
+                        <a href="#">Gujarat</a>
+                        <a href="#">Assam</a>
+                        <a href="#">Kerala</a>
+                        <a href="#">TN</a>
+                        <a href="#">Odisha</a>
+                        <a href="#">WB</a>
+                        <a href="#">Haryana</a>
+                        <a href="#">Goa</a>
+                        <a href="#">JK</a>
+                        <a href="#">Tripura</a>
+                        <a href="#">Manipur</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NCERT -->
+            <div class="nav-item">
+                <div class="nav-label">
+                    NCERT <span class="chevron">▼</span>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="grid-container">
+                        <a href="NCERT Books 2022-23.html">NCERT Books 2022-23</a>
+                        <a href="#">Class 11</a>
+                        <a href="#">Class 10</a>
+                        <a href="#">Class 9</a>
+                        <a href="#">Class 8</a>
+                        <a href="#">Class 7</a>
+                        <a href="#">Class 6</a>
+                        <a href="#">Class 5</a>
+                        <a href="#">Class 4</a>
+                        <a href="#">Class 3</a>
+                        <a href="#">Class 2</a>
+                        <a href="#">Class 1</a>
+                        <a href="#">Solutions</a>
+                        <a href="#">Notes</a>
+                        <a href="#">Books PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JEE -->
+            <div class="nav-item">
+                <div class="nav-label">
+                    JEE <span class="chevron">▼</span>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="grid-container">
+                        <a href="#">Mains</a>
+                        <a href="#">Advanced</a>
+                        <a href="#">Physics</a>
+                        <a href="#">Chemistry</a>
+                        <a href="#">Maths</a>
+                        <a href="#">Mock Test</a>
+                        <a href="#">Syllabus</a>
+                        <a href="#">Cutoff</a>
+                        <a href="#">PYQ</a>
+                        <a href="#">Revision</a>
+                        <a href="#">Formula</a>
+                        <a href="#">Results</a>
+                        <a href="#">Strategy</a>
+                        <a href="#">Books</a>
+                        <a href="#">News</a>
+                        <a href="#">Updates</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+        <!-- LEFT SIDE -->
+        <div class="text-section">
+            <h1>India’s <span>#1</span> Online Learning Platform</h1>
+            <p>Free online access to NCERT textbook & more.</p>
+            <p><a href="#" class="trusted">Trusted by 2Cr+ USERS</a></p>
+        </div>
+
+        <!-- RIGHT SIDE CAROUSEL -->
+        <div class="carousel-section">
+            <button class="carousel-btn prev-btn" id="prevBtn">&#10094;</button>
+            <button class="carousel-btn next-btn" id="nextBtn">&#10095;</button>
+
+            <div class="carousel-container" id="carouselContainer">
+                <div class="carousel-slide">
+                    <img src="1.png" alt="CBSE Sample Papers">
+                </div>
+                <div class="carousel-slide">
+                    <img src="2.png" alt="Online Study Resources">
+                </div>
+                <div class="carousel-slide">
+                    <img src="3.png" alt="Exam Preparation Guide">
+                </div>
+                <div class="carousel-slide">
+                    <img src="4.png" alt="Career Guidance Session">
+                </div>
+                <div class="carousel-slide">
+                    <img src="5.png" alt="Student Active Learning">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+        const container = document.getElementById('carouselContainer');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let counter = 0;
+        let slideWidth = slides[0].clientWidth;
+        let autoSlide;
+
+        /* Update slide position */
+        function updateSlide() {
+            slideWidth = slides[0].clientWidth;
+            container.style.transform = `translateX(${-slideWidth * counter}px)`;
+        }
+
+        /* Auto Slide */
+        function startAutoSlide() {
+            autoSlide = setInterval(() => {
+                counter = (counter + 1) % slides.length;
+                updateSlide();
+            }, 4000);
+        }
+
+        /* Reset Auto Slide on manual click */
+        function resetAutoSlide() {
+            clearInterval(autoSlide);
+            startAutoSlide();
+        }
+
+        /* Next */
+        nextBtn.addEventListener('click', () => {
+            counter = (counter + 1) % slides.length;
+            updateSlide();
+            resetAutoSlide();
+        });
+
+        /* Previous */
+        prevBtn.addEventListener('click', () => {
+            counter = (counter - 1 + slides.length) % slides.length;
+            updateSlide();
+            resetAutoSlide();
+        });
+
+        /* Adjust on window resize */
+        window.addEventListener('resize', updateSlide);
+
+        /* Start */
+        startAutoSlide();
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="mithun1">
+
+        <div class="ticker-wrapper">
+            <div class="ticker-label">Latest Updates</div>
+
+            <div class="ticker-scroll">
+
+                <!-- Original Items -->
+                <div class="ticker-item"><span class="icon">📢</span>Class 12 important questions uploaded</div>
+                <div class="ticker-item"><span class="icon">📘</span>Practical viva material available</div>
+                <div class="ticker-item"><span class="icon">📚</span>Hindi & English notes updated</div>
+                <div class="ticker-item"><span class="icon">📝</span>JEE Mains 2026 Sample Papers</div>
+                <div class="ticker-item"><span class="icon">🎓</span>Scholarship form deadline extended</div>
+                <div class="ticker-item"><span class="icon">💻</span>New Coding Bootcamp starting Monday</div>
+                <div class="ticker-item"><span class="icon">🏆</span>Topper interview series live now</div>
+                <div class="ticker-item"><span class="icon">🔬</span>Physics Lab manual PDF added</div>
+                <div class="ticker-item"><span class="icon">🌍</span>Geography map work practice set</div>
+                <div class="ticker-item"><span class="icon">⏰</span>NEET Exam schedule released</div>
+
+                <!-- Duplicate For Smooth Loop -->
+                <div class="ticker-item"><span class="icon">📢</span>Class 12 important questions uploaded</div>
+                <div class="ticker-item"><span class="icon">📘</span>Practical viva material available</div>
+                <div class="ticker-item"><span class="icon">📚</span>Hindi & English notes updated</div>
+                <div class="ticker-item"><span class="icon">📝</span>JEE Mains 2026 Sample Papers</div>
+                <div class="ticker-item"><span class="icon">🎓</span>Scholarship form deadline extended</div>
+                <div class="ticker-item"><span class="icon">💻</span>New Coding Bootcamp starting Monday</div>
+                <div class="ticker-item"><span class="icon">🏆</span>Topper interview series live now</div>
+                <div class="ticker-item"><span class="icon">🔬</span>Physics Lab manual PDF added</div>
+                <div class="ticker-item"><span class="icon">🌍</span>Geography map work practice set</div>
+                <div class="ticker-item"><span class="icon">⏰</span>NEET Exam schedule released</div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="mithun1">
+
+        <!-- Navigation -->
+        <div class="nav-container">
+            <span class="arrow" onclick="scrollNav(-200)">&lt;</span>
+
+            <div class="nav-scroll" id="navScroll">
+                <a href="#" class="nav-pill active">NCERT Books & Solutions</a>
+                <a href="#" class="nav-pill">State Books</a>
+                <a href="#" class="nav-pill">Books & Solutions</a>
+                <a href="#" class="nav-pill">CBSE</a>
+                <a href="#" class="nav-pill">CISCE</a>
+                <a href="#" class="nav-pill">JEE</a>
+                <a href="#" class="nav-pill">NEET</a>
+                <a href="#" class="nav-pill">CUET</a>
+            </div>
+
+            <span class="arrow" onclick="scrollNav(200)">&gt;</span>
+        </div>
+
+        <!-- Intro -->
+        <div class="intro-text">
+            <h2>NCERT Books & Solutions</h2>
+            <p>
+                NCERT Books and Solutions can be of great use if you are trying to excel in your school exams.
+                The journey starts right from when you step into 1st class as every class holds great value as you grow.
+                Although higher classes students such as Class 10th to 12th should have a better knowledge of all the
+                concepts.
+                <a href="#" class="read-more">Read More...</a>
+            </p>
+        </div>
+
+        <!-- Cards -->
+        <div class="card-grid">
+
+            <a href="NCERT Books 2022-23.html" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Books 2022-23</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Solutions</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Notes</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Exemplar Books</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Exemplar Solution</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">States UT Book</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">School Kits & Lab Manual</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Books 2021-22</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Books 2020-21</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Book 2019-2020</div>
+                </div>
+            </a>
+            <a href="#" class="card-link">
+                <div class="resource-card">
+                    <div class="icon-box">📖</div>
+                    <div class="card-title">NCERT Book 2015-2016</div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+        function scrollNav(value) {
+            document.getElementById('navScroll').scrollBy({
+                left: value,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container-card">
+
+        <div class="content-left">
+            <h1 class="title-text">Stay Connected<br>With</h1>
+            <span class="brand-name">My Site</span>
+
+            <div class="social-grid">
+                <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i><span>Whatsapp</span></a>
+                <a href="#" class="social-btn"><i class="fab fa-telegram"></i><span>Telegram</span></a>
+                <a href="#" class="social-btn"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+                <a href="#" class="social-btn"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+                <a href="#" class="social-btn"><i class="fab fa-pinterest"></i><span>Pinterest</span></a>
+                <a href="#" class="social-btn"><i class="fab fa-youtube"></i><span>Youtube</span></a>
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin"></i><span>Linkedin</span></a>
+                <a href="#" class="see-all-link">See All →</a>
+            </div>
+        </div>
+
+        <div class="content-right">
+            <div class="phone-frame">
+                <div class="phone-brand">My Site</div>
+                <div class="phone-icon-center">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+            </div>
+
+            <div class="floating-icon pos-1"><i class="fab fa-instagram"></i></div>
+            <div class="floating-icon pos-2"><i class="fab fa-facebook-f"></i></div>
+            <div class="floating-icon pos-3"><i class="fas fa-comment-dots"></i></div>
+            <div class="floating-icon pos-4"><i class="fab fa-twitter"></i></div>
+            <div class="floating-icon pos-5"><i class="fab fa-youtube"></i></div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="stats-section">
+
+        <div class="main-container">
+
+            <div class="section-header">
+                <h2>Our Numbers Speak For Us</h2>
+                <div class="sub-heading">2Cr+ Trusted Students</div>
+            </div>
+
+            <div class="stats-grid">
+
+                <!-- Card 1 -->
+                <div class="stat-card">
+                    <div class="icon-wrapper orange">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                            <path d="M9 14l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <div class="stat-value text-orange">1Cr+</div>
+                    <div class="divider"></div>
+                    <div class="stat-label">Test Attempted</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="stat-card">
+                    <div class="icon-wrapper green">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </div>
+                    <div class="stat-value text-green">3Cr+</div>
+                    <div class="divider"></div>
+                    <div class="stat-label">Monthly Page Views</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="stat-card">
+                    <div class="icon-wrapper purple">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <div class="stat-value text-purple">1000K+</div>
+                    <div class="divider"></div>
+                    <div class="stat-label">App Downloads</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-card">
+            <h2>Want Free Study Materials?</h2>
+            <p>Sign Up/Log in to get FREE study materials for your class along with the MCQs for free of cost.</p>
+            <div class="button-group">
+                <a href="/login" class="btn btn-login">Login</a>
+                <a href="/signup" class="btn btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="page-container">
+
+        <!-- NCERT Section -->
+        <div class="section">
+            <h2 class="section-title">NCERT Books & Solutions</h2>
+            <div class="link-grid">
+                <a href="NCERT Books 2022-23.html">NCERT Books 2022-23</a>
+                <a href="#">NCERT Solutions</a>
+                <a href="#">NCERT Exemplar Books</a>
+                <a href="#">State UT Books</a>
+                <a href="#">NCERT Books 2020-21</a>
+                <a href="#">NCERT Notes</a>
+                <a href="#">NCERT Exemplar Solutions</a>
+                <a href="#">School kits & Lab Manual</a>
+                <a href="#">NCERT Books 2019-20</a>
+            </div>
+        </div>
+
+        <!-- CBSE Section -->
+        <div class="section">
+            <h2 class="section-title">CBSE</h2>
+            <div class="link-grid">
+                <a href="#">CBSE Syllabus</a>
+                <a href="#">CBSE MCQ PDF</a>
+                <a href="#">CBSE Hot Questions</a>
+                <a href="#">CBSE Case Study</a>
+                <a href="#">CBSE Sample Papers</a>
+                <a href="#">CBSE Revision Notes</a>
+                <a href="#">CBSE Lab Manual</a>
+                <a href="#">CBSE Previous Year Papers</a>
+            </div>
+        </div>
+
+        <!-- Free Books Section -->
+        <div class="section">
+            <h2 class="section-title">Free Books and Solutions</h2>
+            <div class="link-grid">
+                <a href="#">RD Sharma Solution</a>
+                <a href="#">TR Jain Solutions</a>
+                <a href="#">All In One</a>
+                <a href="#">Selina Solutions</a>
+            </div>
+        </div>
+
+        <!-- State Boards Section -->
+        <div class="section">
+            <h2 class="section-title">State Boards Books</h2>
+            <!-- Empty or more links can go here -->
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-col">
+                <a href="/" class="logo">
+                    <span class="logo-blue">Self</span>
+                    <span class="logo-green">Studys</span>
+                    <span class="logo-dot-com">.com</span>
+                </a>
+                <p>We provide unique and useful study materials to help students become self-sufficient in completing
+                    homework and clearing doubts instantly.</p>
+                <a href="mailto:hello@selfstudys.com" class="email-link">hello@selfstudys.com</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/social-media">Social Media</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <p>Follow us on social media for educational updates.</p>
+                <div class="social-container">
+                    <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 SelfStudys.com — All Rights Reserved
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
